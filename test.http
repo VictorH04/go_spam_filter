@@ -1,0 +1,13 @@
+POST http://localhost:8080/classify
+Content-Type: application/json
+
+{"content": "You won a free iPhone! Click now!!!", "content_type": "text"}
+
+###
+POST http://localhost:8080/classify
+Content-Type: application/json
+
+{"content": "Hi, following up on our meeting from Tuesday.", "content_type": "email"}
+
+###
+GET http://localhost:8080/classify

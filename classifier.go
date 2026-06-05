@@ -15,7 +15,7 @@ type aiResponse struct {
 	Reason string 	`json:"reason"`
 }
 
-func classify(client *anthropic.Client, msg Message) (SpamResult, error) {
+func classifyWithContext(ctx context.Context, client *anthropic.Client, msg Message) (SpamResult, error) {
 	if msg.Content == "" {
 		return SpamResult{}, fmt.Errorf("content cannot be empty")
 	}
@@ -26,7 +26,7 @@ func classify(client *anthropic.Client, msg Message) (SpamResult, error) {
 
 	prompt := buildPrompt(msg)
 
-	response, err := client.Messages.New(context.Background(), anthropic.MessageNewParams{
+	response, err := client.Messages.New(ctx, anthropic.MessageNewParams{
 		Model:     anthropic.ModelClaudeHaiku4_5,
 		MaxTokens: 256,
 		Messages: []anthropic.MessageParam{

@@ -9,7 +9,7 @@ const (
 
 type Message struct {
 	Content 	string 		`json:"content"`
-	ContentType ContentType `json:"contentType"`
+	ContentType ContentType `json:"content_type"`
 }
 
 type SpamResult struct {
